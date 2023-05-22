@@ -1,0 +1,96 @@
+{% extends 'baseMain.html' %}
+{% load static %}
+{% load static tailwind_tags %}
+
+{% block title %} 
+    ADD DOCUMENT
+{% endblock %}
+
+
+
+{% block content %} 
+    <!--CONTENT WRAPPER-->
+    <div class="flex flex-col text-white w-screen h-screen">
+        <!--HEADER-->
+        {% include 'partials/_systemAdminNavbar.html' %}
+
+        <!--HEADER END-->
+
+        <!--CONTENT GRID-->
+        <div class="flex flex-col m-6 h-full justify-center items-center">
+            {% if error_message %}
+                <p>
+                    <strong>{{ error_message }}</strong>
+                </p>
+            {% endif %}
+            
+            <form action="{% url 'systemAdmin:processAddDocument' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <div class="form-control">
+                    <label class="input-group input-group-vertical">
+                      <span>Document Title</span>
+                      <input type="text" autocomplete="off" name="docu_title" id="docu_title" placeholder="Document Title" class="input input-bordered" />
+                    </label>
+                </div>
+
+                <div class="form-control">
+                    <label class="input-group input-group-vertical">
+                      <span>Author/s</span>
+                      <input type="text" autocomplete="off" name="docu_authors" id="docu_authors" placeholder="Author 1, Author 2, Author 3..." class="input input-bordered" />
+                    </label>
+                </div>
+
+                <div class="form-control">
+                    <label class="input-group input-group-vertical">
+                      <span>Date Published</span>
+                      <input type="date" autocomplete="off" name="docu_published" id="docu_published" class="input input-bordered" />
+                    </label>
+                </div>
+
+                <div class="form-control">
+                    <label class="input-group input-group-vertical">
+                      <span>Cover Image</span>
+                      <input type="file" autocomplete="off" name="docu_cover" id="docu_cover" class="input input-bordered" />
+                    </label>
+                </div>
+
+                <div class="form-control">
+                    <label class="input-group input-group-vertical">
+                      <span>Department</span>
+                      <input list="dept_list" autocomplete="off" name="docu_department" id="docu_department" placeholder="" class="input input-bordered" />
+                        <datalist id="dept_list">
+                            <option value="Civil Engineering"></option>
+                            <option value="Electrical Engineering"></option>
+                            <option value="Information Technology"></option>
+                        </datalist>
+                    </label>
+                </div>
+
+                <div class="form-control">
+                    <label class="input-group input-group-vertical">
+                      <span>Topic/s</span>
+                      <input type="text" autocomplete="off" name="docu_topic" id="docu_topic" placeholder="Topic Name" class="input input-bordered" />
+                    </label>
+                </div>
+
+                <div class="form-control">
+                    <label class="input-group input-group-vertical">
+                      <span>Abstract</span>
+                      <input type="textarea" autocomplete="off" name="docu_abstract" id="docu_abstract" placeholder="Abstract goes here." class="input input-bordered" />
+                    </label>
+                </div>
+
+                <div class="form-control">
+                    <label class="input-group input-group-vertical">
+                      <span>Full Document File</span>
+                      <input type="file" name="docu_file" id="docu_file" class="input input-bordered" />
+                    </label>
+                </div>
+
+                <button type="submit" class="btn btn-success">ADD DOCUMENT</button>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

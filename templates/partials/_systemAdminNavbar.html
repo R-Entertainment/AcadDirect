@@ -1,0 +1,33 @@
+{% load static %}
+
+<div class="flex flex-row w-screen h-16 bg-navcol justify-between bg-transparent text-center hover:shadow-lg transition ease-out 200">
+    <div class="flex ">
+        <img src="{% static 'assets/logos/AcadDirect-Logov2-White.png' %}" alt="AcadDirect Logo White" class="h-full w-full p-4 ml-4 hover:animate-pulse" oncontextmenu="return false;">
+    </div>
+
+    <div class="flex flex-row items-center justify-end">
+        <nav>
+            <a href=" " class="mr-16 font-bold text-xl p-2 tracking-wider rounded-md hover:bg-[#4F78A8] focus:bg-[#033269] transition ease-out 200">
+                HOME
+            </a>
+            <div class="dropdown">
+                <label class="btn m-1 mr-16 font-bold text-xl p-2 tracking-wider rounded-md hover:bg-[#4F78A8] focus:bg-[#033269] transition ease-out 200" tabindex="0">
+                        MANAGE
+                </label>
+                <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+                    <li><a href="{% url 'systemAdmin:manageStudents' %}">MANAGE STUDENTS</a></li>
+                    <li><a href="{% url 'systemAdmin:manageFaculties' %}">MANAGE FACULTIES</a></li>
+                    <li><a href="{% url 'systemAdmin:manageDocuments' %}">MANAGE DOCUMENTS</a></li>
+                  </ul>
+            </div>
+            
+            <a href="#" class="mr-16 font-bold text-xl p-2 tracking-wider rounded-md hover:bg-[#4F78A8] focus:bg-[#033269] transition ease-out 200">
+                ABOUT US
+            </a>
+
+        </nav>
+        <a href=" " class="mr-16 font-bold text-xl p-2 rounded-md hover:bg-[#4F78A8] focus:bg-[#033269] transition ease-out 200">
+            <img src="{% static 'assets/icons/user.png' %}" alt="Account Icon" class="w-5 h-5 invert">
+        </a>
+    </div>
+</div>

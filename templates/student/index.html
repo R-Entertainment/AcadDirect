@@ -1,0 +1,177 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load static tailwind_tags %}
+
+{% block title %} 
+    LOG IN PORTALS
+{% endblock %}
+
+{% block content %} 
+    <!--CONTENT WRAPPER-->
+    <div class="flex flex-col text-white w-screen h-screen">
+        <!--HEADER-->
+        {% include 'partials/_preNavbar.html' %}
+
+        <!--HEADER END-->
+
+        <!--CONTENT GRID-->
+        <div class="grid grid-cols-2 mx-6 h-full justify-center items-center">
+            <!--GRAPHICS GRID-->
+            <div class="grid grid-rows-2 h-[95%] w-full">
+                <!--LOGO AND SLOGAN-->
+                <div class="grid grid-rows-3 h-[100%] justify-center items-start gap-6">
+                    <div class="flex row-span-2 flex-col justify-end items-center h-[100%]">
+                        <img src="{% static 'assets/logos/AcadDirect-Logov2-White.png' %}" alt="AcadDirect Logo White" class="h-[50%]" oncontextmenu="return false;">
+                    </div>
+                    <div class="flex row-span-1 flex-col justify-start h-[100%]">
+                        <span class="font-semibold italic text-start text-lg">“Directory of academic achievements to direct the future.”</span>
+                    </div>
+                </div>
+
+                <!--ORG LOGOS AND EMBLEMS-->
+                <div class="grid grid-rows-2 h-[100%] w-[100%] justify-center gap-8">
+                    <div class="grid grid-cols-2 h-[100%] w-[100%] justify-center">
+                        <div class="flex justify-center">
+                            <img src="{% static 'assets/logos/plv-logo.png' %}" alt="PLV Logo" class="flex h-20 w-20" oncontextmenu="return false;">
+                        </div>
+                        <div class="flex justify-center">
+                            <img src="{% static 'assets/logos/plv-library-logo.png' %}" alt="PLV Library Logo" class="flex h-20 w-20" oncontextmenu="return false;">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-3 h-[100%] w-[100%] gap-10 justify-center">
+                        <div class="flex justify-center">
+                            <img src="{% static 'assets/logos/aces-logo.png' %}" alt="ACES Logo" class="flex h-20 w-20" oncontextmenu="return false;">
+                        </div>
+                        <div class="flex justify-center">
+                            <img src="{% static 'assets/logos/aees-logo.png' %}" alt="AEES Logo" class="flex h-20 w-20" oncontextmenu="return false;">
+                        </div>
+                        <div class="flex justify-center">
+                            <img src="{% static 'assets/logos/vits-logo.png' %}" alt="VITS Logo" class="flex h-20 w-20" oncontextmenu="return false;">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!--PORTAL LINKS GRID-->
+            <div class="flex flex-col justify-center items-center h-[95%] w-full gap-4 p-4 font-bree">
+
+                <div class="flex flex-col bg-[#1C3048] rounded-lg h-[100%] w-[550px] text-center justify-center items-center overflow-hidden">
+                    <div class="flex">
+                        <form action="" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            
+                            
+                            <div class=" ">
+    
+                            </div>
+                            
+                        </form>
+                    </div>
+                    
+                    <div class="grid grid-cols-3 justify-center items-end h-[100%] w-[100%] pb-4">
+                        <div class="flex flex-col justify-center items-center pl-20">
+                            <span class="text-xl">CE</span>
+                            <button onclick="location.href='/studentLogIn'"
+                            class="flex flex-row justify-center tooltip items-center bg-ce w-[80px] h-[80px] rounded-md p-2 hover:bg-[#ed873b] hover:shadow-lg hover:-translate-y-1 focus:bg-[#d15f09] transition ease-out 200" data-tip="Log In as CE Student">
+                                <div class="flex flex-row">
+                                    <img src="{% static 'assets/icons/foundation-stone.png' %}" alt="CE Icon" class="h-[100%]" oncontextmenu="return false;">
+                                </div>
+                            </button>
+                        </div>
+                        <div class="flex flex-col justify-center items-center">
+                            <span class="text-xl">EE</span>
+                            <button onclick="location.href='/studentLogIn'"
+                            class="flex flex-row justify-center tooltip items-center bg-ee w-[80px] h-[80px] rounded-md p-2 hover:bg-[#8740d1] hover:shadow-lg hover:-translate-y-1 focus:bg-[#5f0eb2] transition ease-out 200" data-tip="Log In as EE Student">
+                                <div class="flex flex-row">
+                                    <img src="{% static 'assets/icons/power.png' %}" alt="EE Icon" class="h-[100%]" oncontextmenu="return false;">
+                                </div>
+                            </button>
+                        </div>
+                        <div class="flex flex-col justify-center items-center pr-20">
+                            <span class="text-xl">IT</span>
+                            <button onclick="location.href='/studentLogIn'"
+                            class="flex flex-row justify-center tooltip items-center bg-it w-[80px] h-[80px] rounded-md p-2 hover:bg-[#e0e0e0] hover:shadow-lg hover:-translate-y-1 focus:bg-[#adadad] transition ease-out 200" data-tip="Log In as IT Student">
+                                <div class="flex flex-row">
+                                    <img src="{% static 'assets/icons/technical-support.png' %}" alt="IT Icon" class="h-[100%]" oncontextmenu="return false;">
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="flex row-span-1 justify-center items-center text-start w-[100%] p-4">
+                        <span class="text-sm tracking-wider">Coordinate with a library staff if your student
+                            number and/or password is correct but still cannot log in.</span>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+    <!--STUDENT PORTAL CARD
+    <div class="grid grid-rows-3 bg-slate-300 rounded-xl border-4 border-gray-900 p-3 h-[100%] justify-center text-center gap-2">
+        <div class="flex justify-center items-end mb-2">
+            <img src="{% static 'assets/icons/reading-book.png' %}" alt="CEIT Student Portal Icon" class="grid h-12" oncontextmenu="return false;">
+        </div>
+        <div class="flex justify-center items-center">
+            <span class="font-bold text-4xl font-bree tracking-wider">CEIT STUDENT PORTAL</span>
+        </div>
+        <div class="flex justify-center items-center">
+            <button onclick="location.href='/studentLogIn'" class="rounded-lg border-gray-900 border-4 p-2 w-full text-lg font-bold hover:bg-gray-900 hover:text-slate-300 focus:bg-gray-600 focus:border-gray-600 transition ease-out duration-200">
+                LOG IN HERE
+            </button>
+        </div>
+    </div>
+
+    FACULTY PORTAL CARD
+    <div class="grid grid-rows-3 bg-slate-300 rounded-xl border-4 border-gray-900 p-3 h-[100%] justify-center text-center gap-2">
+        <div class="flex justify-center items-end mb-2">
+            <img src="{% static 'assets/icons/teacher.png' %}" alt="CEIT Faculty Portal Icon" class="grid h-14" oncontextmenu="return false;">
+        </div>
+        <div class="flex justify-center items-center">
+            <span class="font-bold text-4xl font-bree tracking-wider">CEIT FACULTY PORTAL</span>
+        </div>
+        <div class="flex justify-center items-center">
+            <button onclick="location.href='#'" class="rounded-lg border-gray-900 border-4 p-2 w-full text-lg font-bold hover:bg-gray-900 hover:text-slate-300 focus:bg-gray-600 focus:border-gray-600 transition ease-out duration-200">
+                LOG IN HERE
+            </button>
+        </div>
+    </div>
+
+    SYSTEM ADMIN PORTAL CARD
+    <div class="grid grid-rows-3 bg-slate-300 rounded-xl border-4 border-gray-900 p-3 h-[100%] justify-center text-center gap-2">
+        <div class="flex justify-center items-end mb-2">
+            <img src="{% static 'assets/icons/admin.png' %}" alt="System Admin Portal Icon" class="grid h-12" oncontextmenu="return false;">
+        </div>
+        <div class="flex justify-center items-center">
+            <span class="font-bold text-4xl font-bree tracking-wider">SYSTEM ADMIN PORTAL</span>
+        </div>
+        <div class="flex justify-center items-center">
+            <button onclick="location.href='/system-admin'" class="rounded-lg border-gray-900 border-4 p-2 w-full text-lg font-bold hover:bg-gray-900 hover:text-slate-300 focus:bg-gray-600 focus:border-gray-600 transition ease-out duration-200">
+                LOG IN HERE
+            </button>
+        </div>
+    </div>
+
+    APPROVAL ADMIN PORTAL CARD
+    <div class="grid grid-rows-3 bg-slate-300 rounded-xl border-4 border-gray-900 p-3 h-[100%] justify-center text-center gap-2">
+        <div class="flex justify-center items-end mb-2">
+            <img src="{% static 'assets/icons/active-user.png' %}" alt="Approval Admin Portal Icon" class="grid h-12" oncontextmenu="return false;">
+        </div>
+        <div class="flex justify-center items-center">
+            <span class="font-bold text-4xl font-bree tracking-wider">APPROVAL ADMIN PORTAL</span>
+        </div>
+        <div class="flex justify-center items-center">
+            <button onclick="location.href='#'" class="rounded-lg border-gray-900 border-4 p-2 w-full text-lg font-bold hover:bg-gray-900 hover:text-slate-300 focus:bg-gray-600 focus:border-gray-600 transition ease-out duration-200">
+                LOG IN HERE
+            </button>
+        </div>
+    </div>-->
+
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'baseMain.html' %}
+{% load static %}
+{% load static tailwind_tags %}
+
+{% block title %} 
+    HOME
+{% endblock %}
+
+{% block content %} 
+    <!--CONTENT WRAPPER-->
+    <div class="flex flex-col text-white w-screen h-screen">
+        <!--HEADER-->
+        {% include 'partials/_mainNavbar.html' %}
+
+        <!--HEADER END-->
+
+        <!--CONTENT GRID-->
+        <div class="flex flex-col m-6 h-full justify-start items-center">
+            <div class="flex flex-row w-full h-[50%] bg-cover bg-fixed bg-center bg-no-repeat" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/static/assets/images/plv-library-bg-2.jpg');">
+                
+            </div>
+
+            <div class="flex w-full h-[500px] mt-10">
+                <div class="flex flex-row justify-between w-full">
+                    <div class="flex">
+                        <span class="font-bree font-semibold tracking-wider text-5xl">RECENT IT CAPSTONES</span>
+                    </div>
+                    <div class="flex">
+                        <a href="#" class="text-xl tracking-wider">More ></a>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

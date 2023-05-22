@@ -1,0 +1,37 @@
+{% extends 'baseMain.html' %}
+{% load static %}
+{% load static tailwind_tags %}
+
+{% block title %} 
+    {{ faculty.faculty_fname }} {{ faculty.faculty_lname }}
+{% endblock %}
+
+{% block content %} 
+    <!--CONTENT WRAPPER-->
+    <div class="flex flex-col text-white w-screen h-screen">
+        <!--HEADER-->
+        {% include 'partials/_systemAdminNavbar.html' %}
+
+        <!--HEADER END-->
+
+        <!--CONTENT GRID-->
+        <div class="flex flex-col m-6 h-full justify-center items-center">
+            {{ faculty.faculty_lname }}
+
+            <div class="flex">
+                <button onclick="location.href='/system-admin/manage-faculties'">BACK</button>
+            </div>
+            <div class="flex">
+                <a href="{% url 'systemAdmin:editFaculty' faculty.id %}">
+                    EDIT
+                </a>
+            </div>
+            <div class="flex">
+                <a href="{% url 'systemAdmin:facultyDelete' faculty.id %}">
+                    DELETE
+                </a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'baseMain.html' %}
+{% load static %}
+{% load static tailwind_tags %}
+
+{% block title %} 
+    MANAGE DOCUMENTS
+{% endblock %}
+
+{% block content %} 
+    <!--CONTENT WRAPPER-->
+    <div class="flex flex-col text-white w-screen h-screen">
+        <!--HEADER-->
+        {% include 'partials/_systemAdminNavbar.html' %}
+
+        <!--HEADER END-->
+
+        <!--CONTENT GRID-->
+        <div class="flex flex-col m-6 h-full">
+            {% if document_list %}
+            <div class="flex flex-row bg-zinc-800 rounded-md w-10">
+                <table class="table table-auto table-zebra">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Author/s</th>
+                            <th>Date Published</th>
+                            <th>Cover Image</th>
+                            <th>Department</th>
+                            <th>Topic/s</th>
+                            <th>Full Document File</th>
+                            <th>Date Created</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for document in document_list %}
+                        <tr>
+                                <td><a href="{% url 'systemAdmin:documentDetails' document.id %}">
+                                    {{ document.docu_title }}</a>
+                                </td>
+                            
+                            <td>{{ document.docu_authors }}</td>
+                            <td>{{ document.docu_published }}</td>
+                            <td><img src="media/{{ document.docu_cover }}" alt="Cover Image" class="w-10 h-10"></td>
+                            <td>{{ document.docu_department }}</td>
+                            <td>{{ document.docu_topic }}</td>
+                            <td><a href="{{ document.docu_file }}">{{ document.docu_file }}</a></td>
+                            <td>{{ document.date_created }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% endif %}
+
+            <div class="flex">
+                <button onclick="location.href='/system-admin/add-document'">ADD</button>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

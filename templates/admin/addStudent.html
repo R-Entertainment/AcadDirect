@@ -1,0 +1,75 @@
+{% extends 'baseMain.html' %}
+{% load static %}
+{% load static tailwind_tags %}
+
+{% block title %} 
+    ADD STUDENT
+{% endblock %}
+
+
+
+{% block content %} 
+    <!--CONTENT WRAPPER-->
+    <div class="flex flex-col text-white w-screen h-screen">
+        <!--HEADER-->
+        {% include 'partials/_systemAdminNavbar.html' %}
+
+        <!--HEADER END-->
+
+        <!--CONTENT GRID-->
+        <div class="flex flex-col m-6 h-full justify-center items-center">
+            {% if error_message %}
+                <p>
+                    <strong>{{ error_message }}</strong>
+                </p>
+            {% endif %}
+
+            <form action="{% url 'systemAdmin:processAddStudent' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <div class="form-control">
+                    <label class="input-group input-group-vertical">
+                      <span>First Name</span>
+                      <input type="text" autocomplete="off" name="student_fname" id="student_fname" placeholder="First Name" class="input input-bordered" />
+                    </label>
+                </div>
+
+                <div class="form-control">
+                    <label class="input-group input-group-vertical">
+                      <span>Last Name</span>
+                      <input type="text" autocomplete="off" name="student_lname" id="student_lname" placeholder="Last Name and Ext." class="input input-bordered" />
+                    </label>
+                </div>
+
+                <div class="form-control">
+                    <label class="input-group input-group-vertical">
+                      <span>Institutional Email</span>
+                      <input type="email" autocomplete="off" name="student_email" id="student_email" placeholder="fullname@plv.edu.ph" class="input input-bordered" />
+                    </label>
+                </div>
+
+                <div class="form-control">
+                    <label class="input-group input-group-vertical">
+                      <span>Password</span>
+                      <input autocomplete="off" type="password" name="student_password" id="student_password" placeholder="##-####" class="input input-bordered" />
+                    </label>
+                </div>
+
+                <div class="form-control">
+                    <label class="input-group input-group-vertical">
+                      <span>Department</span>
+                      <input list="dept_list" autocomplete="off" name="student_department" id="student_department" placeholder="" class="input input-bordered" />
+                        <datalist id="dept_list">
+                            <option value="Civil Engineering"></option>
+                            <option value="Electrical Engineering"></option>
+                            <option value="Information Technology"></option>
+                        </datalist>
+                    </label>
+                </div>
+
+                <button type="submit" class="btn btn-success">ADD STUDENT</button>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

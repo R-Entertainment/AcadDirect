@@ -1,0 +1,86 @@
+{% extends 'baseMain.html' %}
+{% load static %}
+{% load static tailwind_tags %}
+
+{% block title %} 
+    MANAGE STUDENTS
+{% endblock %}
+
+{% block content %} 
+    <!--CONTENT WRAPPER-->
+    <div class="flex flex-col text-white w-screen h-screen">
+        <!--HEADER-->
+        {% include 'partials/_systemAdminNavbar.html' %}
+
+        <!--HEADER END-->
+
+        <!--CONTENT GRID-->
+        <div class="flex flex-col m-6 h-full justify-center items-center">
+            {% if studentPage_object %}
+            <div class="flex flex-row bg-zinc-800 rounded-md">
+                <table class="table table-zebra">
+                    <thead>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                            <th>Department</th>
+                            <th>Date Created</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for student in studentPage_object %}
+                        <tr>
+                                <td><a href="{% url 'systemAdmin:studentDetails' student.id %}">
+                                    {{ student.student_fname }}</a>
+                                </td>
+                            
+                            <td>{{ student.student_lname }}</td>
+                            <td>{{ student.student_email }}</td>
+                            <td class="text-center">{{ student.student_department }}</td>
+                            <td>{{ student.date_created }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% endif %}
+
+                        <div class="btn-group">
+                {% if studentPage_object.has_previous %}
+                    <a href="?page=1">
+                        <button class="btn">
+                            First    
+                        </button>
+                    </a>
+
+                    <a href="?page={{ studentPage_object.previous_page_number }}">
+                        <button class="btn">
+                            Previous    
+                        </button>
+                    </a>
+                {% endif %}
+
+                {% if studentPage_object.has_previous %}
+                <a href="?page={{ studentPage_object.next_page_number }}">
+                    <button class="btn">
+                        Previous    
+                    </button>
+                </a>
+
+                <a href="?page={{ studentPage_object.paginator.num_pages }}">
+                    <button class="btn">
+                        Last    
+                    </button>
+                </a>
+                {% endif %}
+            </div>
+
+            <div class="flex">
+                <button onclick="location.href='/system-admin/add-student'">ADD</button>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

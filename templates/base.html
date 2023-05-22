@@ -1,0 +1,23 @@
+{% load static %}
+{% load static tailwind_tags %}
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../static/assets/icons/AcadDirect-Faviconv2.png">
+    <title>AcadDirect | {% block title %} {% endblock %}</title>
+
+    {% tailwind_css %}
+ </head>
+
+ <body class="select-none bg-cover bg-fixed bg-center bg-no-repeat font-rob" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/static/assets/images/plv-library-bg-1.png');" oncontextmenu="return false;">
+
+        {% block content %}
+        {% endblock %}
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+ </body>
+
+ </html>
